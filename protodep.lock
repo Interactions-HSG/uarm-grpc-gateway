@@ -1,0 +1,7 @@
+proto_outdir = "./vendor/proto"
+
+[[dependencies]]
+  target = "github.com/Interactions-HSG/uArm-Controller/protobuf"
+  revision = "3b2386e93866aa575230fd744c8059cdb57cc27a"
+  branch = "main"
+  path = "uarm-controller"
