@@ -1,0 +1,42 @@
+/** Services/Messages describing device profiles. */
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+
+/**
+ * Represents the profile manager services
+ */
+service ProfileManager {
+  /// Used to register a device profile with an ID. Pass in a RegistrationRequest and a RegistrationResponse will be returned.
+  rpc Register(RegistrationRequest) returns (RegistrationResponse) {}
+  /// Used to quiry the registered profiles. Pass in a Request and a Response will be returned.
+  rpc GetProfiles(google.protobuf.Empty) returns (RegisteredProfileResponse) {}
+}
+
+/**
+ * Represents the registration request for device profiles
+ */
+message RegistrationRequest {
+  string uarm_device_profile_id = 1; ///
+  string gcode = 2;                  ///
+}
+
+/**
+ * Represents the registration response for device profiles
+ */
+message RegistrationResponse {
+  string feedback = 1; ///
+}
+
+/**
+ * Represents the status check response for uArm
+ */
+message RegisteredProfileResponse {
+  repeated Profile profiles = 1; /// Registered profiles
+}
+
+/**
+ * Represents the device profile
+ */
+message Profile {
+}

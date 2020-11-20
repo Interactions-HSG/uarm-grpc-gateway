@@ -1,0 +1,42 @@
+/** Services/Messages describing uArm. */
+syntax = "proto3";
+
+/**
+ * Represents the uArm services.
+ */
+service UArm {
+  /// Used to send G Code to a specific uArm identified by the device profile ID. Pass in a GCodeCommandRequest and a GCodeCommandResponse will be returned.
+  rpc SendGCodeCommand(GCodeCommandRequest) returns (GCodeCommandResponse);
+  /// Used to inquiry the status of a specific uArm identified by the device profile ID. Pass in a StatusRequest and a StatusResponse will be returned.
+  rpc CheckStatus(StatusRequest) returns (StatusResponse);
+}
+
+/**
+ * Represents the command request for uArm G Code
+ */
+message GCodeCommandRequest {
+  string uarm_device_profile_id = 1; /// Unique ID for the device profile (UUID?)
+  string gcode = 2;                  /// G Code to transmit
+}
+
+/**
+ * Represents the command response (feedback) for uArm G Code
+ */
+message GCodeCommandResponse {
+  string feedback = 1; /// Feedback message according to the UFactory developer's guide
+}
+
+/**
+ * Represents the status check request for uArm
+ */
+message StatusRequest {
+  string uarm_device_profile_id = 1; /// Unique ID for the device profile (UUID?)
+}
+
+/**
+ * Represents the status check response for uArm
+ */
+message StatusResponse {
+  string status_response = 1; /// Status response message
+}
+

@@ -1,9 +1,15 @@
-proto_outdir = "./vendor/proto"
+proto_outdir = "./vendor/protobuf"
 
 [[dependencies]]
   target = "github.com/Interactions-HSG/uArm-Controller/protobuf"
   branch = "main"
-  #revision = "v1.0" # tag doesn't work atm
+  #revision = "v1.0" # somehow this tag doesn't work atm
   revision = "3b2386e93866aa575230fd744c8059cdb57cc27a"
   path = "uarm-controller"
+
+[[dependencies]]
+  target = "github.com/protocolbuffers/protobuf/src/google/protobuf"
+  branch = "master"
+  revision = "v3.14.0"
+  path = "google/protobuf"
 
